@@ -1,7 +1,7 @@
 wifi.setmode(wifi.STATION)
 
 ssid="******"
-pwd="waeggib1"
+pwd="XXXXXXXXXXXXX"
 
 wifi.sta.config(ssid, pwd)
 wifi.sta.connect()
