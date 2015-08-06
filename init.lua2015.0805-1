@@ -1,0 +1,24 @@
+wifi.setmode(wifi.STATION)
+
+ssid="******"
+pwd="waeggib1"
+
+wifi.sta.config(ssid, pwd)
+wifi.sta.connect()
+
+tmr.alarm(1, 2000, 1, function()
+if wifi.sta.getip()== nil then
+        print("IP unavaiable, Waiting...")
+else
+        tmr.stop(1)
+        print("Config done, IP is "..wifi.sta.getip())
+end
+end)
+
+-- zum testen, mein eigener MQTT-Broker
+--mqtt_host="raspi.hex-shop.de"
+--mqtt_topic="test/test"
+mqtt_topic="k-bach/temp/123"
+mqtt_host="test.mosquitto.org"
+
+dofile('mqtt2u8g.lua')
